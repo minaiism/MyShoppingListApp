@@ -51,7 +51,7 @@ class ItemEditModal extends React.Component {
         }
     }
 
-    decrementItem(e) {
+    decrementItem() {
         if (this.state.newCount > 1) {
             this.setState({
                 newCount: --this.state.newCount
@@ -63,13 +63,13 @@ class ItemEditModal extends React.Component {
 
     render() {
         return (
-            <div className={classes.Modal} style={{height: 50}}>
+            <div className={classes.modal} style={{height: 50}}>
                 <Button className="edit"
                         bsStyle="info"
                         bsSize="small"
                         onClick={() => this.setState({show: true})}
                 >
-                    <i class="fas fa-edit"/>
+                    <i className={["fas", "fa-edit"].join(" ")}/>
                 </Button>
 
                 <Modal
@@ -80,7 +80,8 @@ class ItemEditModal extends React.Component {
                 >
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title">
-                            <i class="fas fa-edit"/>{" "}{this.props.item.value}
+                            <i className={["fas", "fa-edit"].join(" ")}/>
+                            {" "}{this.props.item.value}
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
@@ -89,16 +90,21 @@ class ItemEditModal extends React.Component {
                             <input type="text" name="name" placeholder={this.props.item.value}
                                    value={this.state.newValue} onChange={evt => this.updateInputValue(evt)}/>
                         </label>
-                        <button onClick={this.incrementItem} className="plusButton"><i class="fas fa-plus-square"/>
+                        <button onClick={this.incrementItem} className="plusButton">
+                            <i className={["fas", "fa-plus-square"].join(" ")}/>
                         </button>
                         {this.state.newCount}
-                        <button onClick={this.decrementItem} className="minusButton"><i
-                            class="fas fa-minus-square"/></button>
+                        <button onClick={this.decrementItem} className="minusButton">
+                            <i className={["fas", "fa-minus-square"].join(" ")}/>
+                        </button>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button onClick={this.updateItem} className="saveButton"><i class="fas fa-save"/></Button>
-                        <Button onClick={this.handleHide} className="closeButton"><i
-                            class="fas fa-window-close"/></Button>
+                        <Button onClick={this.updateItem} className="saveButton">
+                            <i className={["fas", "fa-save"].join(" ")}/>
+                        </Button>
+                        <Button onClick={this.handleHide} className="closeButton">
+                            <i className={["fas", "fa-window-close"].join(" ")}/>
+                        </Button>
                     </Modal.Footer>
                 </Modal>
             </div>
