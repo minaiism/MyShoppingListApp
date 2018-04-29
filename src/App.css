@@ -43,7 +43,7 @@ h1 {
     background-color: #7bcebd;
 }
 
-button.remove{
+button.remove {
     background-color: transparent;
     border: none;
 }
@@ -78,30 +78,34 @@ p.product {
     font-family: 'Roboto Slab', serif;
 }
 
-.addCard{
+.addCard {
     width: 30px;
     background-color: transparent;
     border: none;
     font-size: 22px;
 }
 
-.shoppingBasket{
+.shoppingBasket {
     background-color: transparent;
     border: none;
     font-size: 22px;
 }
 
-.fa-shopping-basket, .fa-home{
+.fa-shopping-basket, .fa-home {
     font-size: 25px;
 }
 
 
 @media (max-width: 550px) and (min-height: 400px) {
     input {
-        width: 90%;
+        width: 70%;
+        text-align: center;
+        margin-right: 20px;
+        margin-bottom: 25px;
     }
 
     li {
         width: 100%;
     }
+
 }

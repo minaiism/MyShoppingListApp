@@ -9,11 +9,13 @@ class ItemEditModal extends React.Component {
         this.handleHide = this.handleHide.bind(this);
         this.updateItem = this.updateItem.bind(this);
         this.incrementItem = this.incrementItem.bind(this);
+        this.decrementItem = this.decrementItem.bind(this);
 
         this.state = {
             show: false,
             name: "",
-            newValue: ""
+            newValue: "",
+            newCount: this.props.item.count
         };
     }
 
@@ -23,7 +25,11 @@ class ItemEditModal extends React.Component {
     }
 
     updateItem() {
-        this.props.updateItem(this.props.item.id, this.state.newValue);
+        this.props.updateItem(this.props.item.id, JSON.stringify({
+            value: this.state.newValue,
+            count: this.state.newCount
+        }));
+
         this.handleHide();
     }
 
@@ -35,23 +41,35 @@ class ItemEditModal extends React.Component {
         this.props.item.value = evt.target.value;
     }
 
-incrementItem(){
-    this.props.incrementItem(this.props.item.id);
-}
+    incrementItem() {
+        if (this.state.newCount < 100) {
+            this.setState({
+                newCount: ++this.state.newCount
+            });
 
-decrementItem(){
+            this.props.item.count = this.state.newCount;
+        }
+    }
 
-}
+    decrementItem(e) {
+        if (this.state.newCount > 1) {
+            this.setState({
+                newCount: --this.state.newCount
+            });
+
+            this.props.item.count = this.state.newCount;
+        }
+    }
 
     render() {
         return (
-            <div className={classes.Modal} style={{height: 100}}>
+            <div className={classes.Modal} style={{height: 50}}>
                 <Button className="edit"
-                    bsStyle="info"
-                    bsSize="small"
-                    onClick={() => this.setState({show: true})}
+                        bsStyle="info"
+                        bsSize="small"
+                        onClick={() => this.setState({show: true})}
                 >
-                    <i class="fas fa-edit"></i>
+                    <i class="fas fa-edit"/>
                 </Button>
 
                 <Modal
@@ -62,22 +80,25 @@ decrementItem(){
                 >
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title">
-                            <i class="fas fa-edit"></i>{" "}{this.props.item.value}
+                            <i class="fas fa-edit"/>{" "}{this.props.item.value}
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <button className="editForm"></button>
-                        <form>
-                            <label>
-                                <input type="text" name="name" placeholder={this.props.item.value} value={this.state.newValue} onChange={evt => this.updateInputValue(evt)}/>
-                            </label>
-                            <button onClick={this.incrementItem} className="plusButton"><i class="fas fa-plus-square"></i></button>
-                            <button className="minusButton"><i class="fas fa-minus-square"></i></button>
-                        </form>
+                        <button className="editForm"/>
+                        <label>
+                            <input type="text" name="name" placeholder={this.props.item.value}
+                                   value={this.state.newValue} onChange={evt => this.updateInputValue(evt)}/>
+                        </label>
+                        <button onClick={this.incrementItem} className="plusButton"><i class="fas fa-plus-square"/>
+                        </button>
+                        {this.state.newCount}
+                        <button onClick={this.decrementItem} className="minusButton"><i
+                            class="fas fa-minus-square"/></button>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button onClick={this.updateItem} className="saveButton"><i class="fas fa-save"></i></Button>
-                        <Button onClick={this.handleHide} className="closeButton"><i class="fas fa-window-close"></i></Button>
+                        <Button onClick={this.updateItem} className="saveButton"><i class="fas fa-save"/></Button>
+                        <Button onClick={this.handleHide} className="closeButton"><i
+                            class="fas fa-window-close"/></Button>
                     </Modal.Footer>
                 </Modal>
             </div>

@@ -4,7 +4,7 @@ import SimpleStorage from "react-simple-storage";
 import ItemEditModal from './components/Modal';
 import {Nav, Navbar, NavItem} from 'react-bootstrap';
 import Logo from './components/Logo/Logo';
-// import ModalHistory from './components/ModalHistory/ModalHistory.js'
+import ModalHistory from './components/ModalHistory/ModalHistory.js'
 
 class App extends Component {
     constructor(props) {
@@ -17,26 +17,39 @@ class App extends Component {
         this.updateInput = this.updateInput.bind(this);
     }
 
-    updateInput(key, value) {
+    updateInput(key, item) {
         // update react state
-        this.setState({[key]: value});
+        this.setState({[key]: item});
 
         // update localStorage
-        localStorage.setItem(key, value);
+        localStorage.setItem(key, item);
     }
 
     addItem() {
-        // create a new item
-        const newItem = {
-            id: 1 + Math.random(),
-            value: this.state.newItem.slice()
-        };
+        const newValue = this.state.newItem.slice();
 
         // copy current list of items
         const list = [...this.state.list];
+        let exists = false;
 
-        // add the new item to the list
-        list.push(newItem);
+        list.forEach(item => {
+            if (item.value === newValue) {
+                item.count++;
+                exists = true;
+            }
+        });
+
+        // create a new item
+        const newItem = {
+            id: 1 + Math.random(),
+            value: newValue,
+            count: 1
+        };
+
+        if (!exists) {
+            // add the new item to the list
+            list.push(newItem);
+        }
 
         // update state with new list, reset the new item input
         this.setState({
@@ -52,6 +65,7 @@ class App extends Component {
     deleteItem(id) {
         // copy current list of items
         const list = [...this.state.list];
+
         // filter out the item being deleted
         const updatedList = list.filter(item => item.id !== id);
 
@@ -64,6 +78,7 @@ class App extends Component {
     incrementItem(id) {
         // copy current list of items
         const list = [...this.state.list];
+
         // filter out the item being deleted
         list.forEach(item => {
             if (item.id === id) {
@@ -75,13 +90,12 @@ class App extends Component {
 
         // update localStorage
         localStorage.setItem("list", JSON.stringify(list));
-
-        console.log(this.state.list);
     }
 
     decrementItem(id) {
         // copy current list of items
         const list = [...this.state.list];
+
         // filter out the item being deleted
         list.forEach(item => {
             if (item.id === id) {
@@ -93,8 +107,6 @@ class App extends Component {
 
         // update localStorage
         localStorage.setItem("list", JSON.stringify(list));
-
-        console.log(this.state.list);
     }
 
 
@@ -114,17 +126,16 @@ class App extends Component {
                         </Nav>
                         <Nav pullRight>
                             <NavItem eventKey={1} href="#">
-                                <i class="fas fa-home"></i>
+                                <i class="fas fa-home"/>
                             </NavItem>
                             <NavItem eventKey={2} href="#">
-                                {/*<ModalHistory/>*/}
-                                <i class="fas fa-shopping-basket"></i>
+                                <ModalHistory/>
                             </NavItem>
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>
                 <SimpleStorage parent={this}/>
-                <div className="shoppingBasket"><br/><h1>Shopping List <i class="fas fa-pencil-alt"></i></h1></div>
+                <div className="shoppingBasket"><br/><h1>Shopping List <i class="fas fa-pencil-alt"/></h1></div>
                 <br/>
                 <div className="jumbo"
                      style={{
@@ -140,12 +151,15 @@ class App extends Component {
                         placeholder="What should I buy ...?"
                         value={this.state.newItem}
                         onChange={e => this.updateInput("newItem", e.target.value)}
+                        onKeyUp={event => {
+                            event.key === "Enter" && this.addItem();
+                        }}
 
                     />
                     <button className="addCard"
                             onClick={() => this.addItem()}
                             disabled={!this.state.newItem.length}>
-                        <i class="fas fa-cart-plus"></i>
+                        <i class="fas fa-cart-plus"/>
                     </button>
                     <br/> <br/>
                     <ul className="block">
@@ -153,16 +167,22 @@ class App extends Component {
                             return (
                                 <li key={item.id}>
                                     {item.value}
-                                    <button className="increment" onClick={() => this.incrementItem(item.id)}><i
-                                        class="fas fa-plus"></i></button>
-                                    <button className="increment" onClick={() => this.decrementItem(item.id)}><i
-                                        class="fas fa-minus"></i></button>
+                                    <button className="increment" onClick={() => {
+                                        if (item.count < 100) {
+                                            this.incrementItem(item.id)
+                                        }
+                                    }}><i class="fas fa-plus"/></button>
                                     {item.count}
+                                    <button className="increment" onClick={() => {
+                                        if (item.count > 1) {
+                                            this.decrementItem(item.id)
+                                        }
+                                    }}><i
+                                        class="fas fa-minus"/></button>
                                     <button className="remove" onClick={() => this.deleteItem(item.id)}>
-                                        <i class="fas fa-trash"></i>
+                                        <i class="fas fa-trash"/>
                                     </button>
-                                    <button className="edit"><ItemEditModal item={item} updateItem={this.updateInput}
-                                                                            incrementItem={this.incrementItem}/>
+                                    <button className="edit"><ItemEditModal item={item} updateItem={this.updateInput}/>
                                     </button>
                                 </li>
                             );
@@ -173,6 +193,5 @@ class App extends Component {
         );
     }
 }
-
 
 export default App;
