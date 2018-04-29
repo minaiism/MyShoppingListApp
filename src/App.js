@@ -5,19 +5,21 @@ import ItemEditModal from './components/Modal';
 import {Nav, Navbar, NavItem} from 'react-bootstrap';
 import Logo from './components/Logo/Logo';
 import ModalHistory from './components/ModalHistory/ModalHistory.js'
+import Autocomplete from "./components/Autocomplete/Autocomplete";
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
             newItem: "",
-            list: []
+            list: [],
         };
 
         this.updateInput = this.updateInput.bind(this);
     }
 
     updateInput(key, item) {
+        console.log("updateinput");
         // update react state
         this.setState({[key]: item});
 
@@ -109,7 +111,6 @@ class App extends Component {
         localStorage.setItem("list", JSON.stringify(list));
     }
 
-
     render() {
         return (
 
@@ -146,17 +147,13 @@ class App extends Component {
                      }}
                 >
                     <br/>
-                    <input
-                        type="text"
-                        placeholder="What should I buy ...?"
-                        value={this.state.newItem}
-                        onChange={e => this.updateInput("newItem", e.target.value)}
-                        onKeyUp={event => {
-                            event.key === "Enter" && this.addItem();
-                        }}
-
+                    <Autocomplete value={this.state.newItem} placeholder="What should I buy ...?"
+                                  onChange={this.updateInput}
+                                  onKeyUp={event => {
+                                      event.key === "Enter" && this.addItem();
+                                  }}
                     />
-                    <button className="addCard"
+                    <button className="AddToCart"
                             onClick={() => this.addItem()}
                             disabled={!this.state.newItem.length}>
                         <i class="fas fa-cart-plus"/>
@@ -182,7 +179,9 @@ class App extends Component {
                                     <button className="remove" onClick={() => this.deleteItem(item.id)}>
                                         <i class="fas fa-trash"/>
                                     </button>
-                                    <button className="edit"><ItemEditModal item={item} updateItem={this.updateInput}/>
+                                    <button className="edit"><ItemEditModal item={item} updateItem={this.updateInput}
+                                                                            incrementItem={this.incrementItem}
+                                                                            decrementItem={this.decrementItem}/>
                                     </button>
                                 </li>
                             );
