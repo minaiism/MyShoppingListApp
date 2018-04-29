@@ -1,0 +1,24 @@
+.logo {
+     padding: 20px;
+     height: 20%;
+     box-sizing: border-box;
+     border-radius: 5px;
+ }
+
+.logo img {
+    height: 10%;
+}
+
+
+button{
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 4px;
+    padding: 2px;
+    margin: 1px;
+    color: black;
+    border-color: gray;
+    background-color: white;
+    width: 60px;
+    font-weight: bold;
+}
