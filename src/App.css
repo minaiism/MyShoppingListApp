@@ -1,0 +1,107 @@
+.App {
+    text-align: center;
+    font-family: 'Roboto Slab', serif;
+}
+
+.Navbar {
+    background-color: #7bcebd;
+    border: none;
+    font-family: 'Roboto Slab', serif;
+    font-weight: bold;
+}
+
+div.navbar-collapse.collapse.in {
+    border: none !important;
+    background-color: transparent;
+}
+
+div.navbar-collapse.collapse.in:hover {
+    border: none !important;
+    background-color: transparent;
+}
+
+button.navbar-toggle {
+    width: 45px;
+    background-color: white !important;
+}
+
+span.icon-bar {
+    background-color: black !important;
+}
+
+a {
+    color: black !important;
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+    font-family: 'Black Han Sans', sans-serif;
+}
+
+.jumbo {
+    border: 3px solid black;
+    background-color: #7bcebd;
+}
+
+button.remove{
+    background-color: transparent;
+    border: none;
+}
+
+ul {
+    list-style-type: none;
+    font-size: 16px;
+    font-weight: bold;
+    color: #04513d;
+}
+
+p {
+    text-align: center;
+}
+
+input {
+    width: 90%;
+}
+
+.block {
+    height: 30%;
+}
+
+.increment {
+    width: 30px;
+    background-color: transparent;
+    border: none;
+}
+
+p.product {
+    font-size: 20px;
+    font-family: 'Roboto Slab', serif;
+}
+
+.addCard{
+    width: 30px;
+    background-color: transparent;
+    border: none;
+    font-size: 22px;
+}
+
+.shoppingBasket{
+    background-color: transparent;
+    border: none;
+    font-size: 22px;
+}
+
+.fa-shopping-basket, .fa-home{
+    font-size: 25px;
+}
+
+
+@media (max-width: 550px) and (min-height: 400px) {
+    input {
+        width: 90%;
+    }
+
+    li {
+        width: 100%;
+    }
+}
