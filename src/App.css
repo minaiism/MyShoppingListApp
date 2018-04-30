@@ -8,16 +8,10 @@
     border: none;
     font-family: 'Roboto Slab', serif;
     font-weight: bold;
-    height: 60px !important;
-}
-div.navbar-collapse.collapse.in {
-    border: none !important;
-    background-color: transparent;
 }
 
-div.navbar-collapse.collapse.in:hover {
-    border: none !important;
-    background-color: transparent;
+.navbar-collapse {
+    border: none;
 }
 
 button.navbar-toggle {
@@ -41,11 +35,6 @@ h1 {
 .jumbo {
     border: 3px solid black;
     background-color: #7bcebd;
-}
-
-button.remove {
-    background-color: transparent;
-    border: none;
 }
 
 ul {
@@ -78,15 +67,18 @@ p.product {
     font-family: 'Roboto Slab', serif;
 }
 
-.AddToCartContainer {
-    float: left;
-    display: inline;
-}
 .AddToCart {
-    width: 30px;
-    background-color: transparent;
+    background-color: #085651;
+    font-size: 20px;
+    display: inline;
+    position: relative;
+    color: white;
     border: none;
-    font-size: 22px;
+    margin-top: 4px;
+}
+
+button.AddToCart {
+    display: inline;
 }
 
 .shoppingBasket {
@@ -99,6 +91,36 @@ p.product {
     font-size: 25px;
 }
 
+.Checkout {
+    border: none;
+    font-size: 22px;
+    color: white;
+    background-color: #085651;
+    float: right;
+    margin-left: 20px;
+    padding: 0;
+    margin-top: 10px;
+    margin-bottom: 0;
+    margin-right: -20px;
+    cursor: pointer;
+
+}
+
+.listOfIcons {
+    width: 100%;
+    height: 30%;
+    position: relative;
+    top: 15px;
+    margin-right: 50px;
+    display: inline-block;
+    cursor: pointer;
+
+}
+
+button.edit2.btn.btn-sm.btn-info {
+    margin: 0;
+    padding: 0;
+}
 
 @media (max-width: 550px) and (min-height: 400px) {
     input {
@@ -112,4 +134,44 @@ p.product {
         width: 100%;
     }
 
+    button.edit2.btn.btn-sm.btn-info {
+        margin: 5px;
+    }
 }
+
+@media (max-width: 1000px) and (min-height: 400px) {
+    input {
+        width: 70%;
+        text-align: center;
+        margin-right: 20px;
+        margin-bottom: 25px;
+    }
+
+    li {
+        width: 100%;
+    }
+
+    button.edit2.btn.btn-sm.btn-info {
+        margin: 5px;
+    }
+}
+
+@media (max-width: 600px) and (min-height: 700px) {
+    input {
+        width: 70%;
+        text-align: center;
+        margin-right: 20px;
+        margin-bottom: 25px;
+    }
+
+    li {
+        width: 100%;
+    }
+
+    button.edit2.btn.btn-sm.btn-info {
+        margin: 10px;
+    }
+
+}
+
+

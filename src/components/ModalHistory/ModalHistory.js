@@ -38,7 +38,7 @@ class ModelHistory extends React.Component {
                 >
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title">
-                            Checkout history
+                            {" "}<i className={["far", "fa-credit-card"].join(" ")} />{" "} Checkout history
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
@@ -47,15 +47,15 @@ class ModelHistory extends React.Component {
                             {
                                 this.props.history.map(checkout => {
                                     return (
-                                        <li key={checkout.time}>
+                                        <li className="dateDisplay" key={checkout.time}>
                                             <div>
-                                                {(new Date(checkout.time)).toLocaleDateString()}
+                                                <p className="dateSetup">{(new Date(checkout.time)).toLocaleTimeString()} {" "} {(new Date(checkout.time)).toLocaleDateString()}</p>
                                             </div>
-                                            <div>
+                                            <div className="itemDisplay">
                                                 {checkout.list.map(element => {
                                                     return (
-                                                        <div>
-                                                            {element.value + ": " + element.count}
+                                                        <div className="itemDisplay">
+                                                            <i className={["fas", "fa-utensils"].join(" ")}/> {" "} {element.value + " : " + element.count}
                                                         </div>
                                                     );
                                                 })}

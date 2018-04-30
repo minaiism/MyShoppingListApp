@@ -1,4 +1,9 @@
 .Autocomplete {
-    width: 80%;
-    display: inline;
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+
+.autoCompleteText{
+    margin-right: 50px;
 }

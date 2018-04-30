@@ -16,9 +16,8 @@ button.btn.btn-sm.btn-info{
     border: none;
     color: black;
     font-size: 17px;
-    height: 20px !important;
-    margin: 10px !important;
     margin-bottom: 15px !important;
+    float: right;
 }
 
 .edit:hover{
@@ -85,6 +84,52 @@ h4#contained-modal-title.modal-title{
     text-align: center;
     font-size: 25px;
     color: black;
+
+}
+
+button.remove{
+    float: right;
+    background-color:transparent;
+    border: none;
+}
+
+@media (max-width: 550px) and (min-height: 400px) {
+
+    button.remove{
+        background-color:transparent;
+        border: none;
+    }
+
+
+    .edit{
+        background-color: transparent;
+        border: none;
+        color: black;
+        font-size: 17px;
+        margin-bottom: 15px !important;
+    }
+
+
+
+}
+
+@media (max-width: 1000px) and (min-height: 600px) {
+
+    button.remove{
+        background-color:transparent;
+        border: none;
+    }
+
+
+    .edit{
+        background-color: transparent;
+        border: none;
+        color: black;
+        font-size: 17px;
+        margin-bottom: 15px !important;
+    }
+
+
 
 }
 

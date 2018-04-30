@@ -63,7 +63,7 @@ class ItemEditModal extends React.Component {
 
     render() {
         return (
-            <div className={classes.modal} style={{height: 50}}>
+            <div className={classes.Modal} className="editButtons" style={{height: 50}}>
                 <Button className="edit"
                         bsStyle="info"
                         bsSize="small"

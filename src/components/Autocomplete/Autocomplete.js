@@ -19,7 +19,7 @@ const getSuggestionValue = suggestion => suggestion.name;
 
 // Use your imagination to render suggestions.
 const renderSuggestion = suggestion => (
-    <div>
+    <div className="autoCompleteText">
         {suggestion.name}
     </div>
 );

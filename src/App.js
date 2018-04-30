@@ -129,12 +129,11 @@ class App extends Component {
 
     render() {
         return (
-
             <div className="App">
-                <Navbar inverse collapseOnSelect className="Navbar">
+                <Navbar inverse className="Navbar">
                     <Navbar.Header>
                         <Navbar.Brand>
-                            <a href="/"><Logo/></a>
+                            <a href="#brand"><Logo/></a>
                         </Navbar.Brand>
                         <Navbar.Toggle/>
                     </Navbar.Header>
@@ -165,18 +164,17 @@ class App extends Component {
                 >
                     <br/>
                     <div>
-                        <Autocomplete className="Autocomplete" value={this.state.newItem}
-                                      placeholder="What should I buy ...?"
-                                      onChange={this.updateInput}
-                                      onKeyUp={event => {
-                                          event.key === "Enter" && this.addItem();
-                                      }}
-                        />
-                        <div className="AddToCartContainer">
+                        <div className="Autocomplete">
+                            <Autocomplete value={this.state.newItem}
+                                          placeholder="What should I buy ...?"
+                                          onChange={this.updateInput}
+                                          onKeyUp={event => {
+                                              event.key === "Enter" && this.addItem();
+                                          }}/>
                             <button className="AddToCart"
                                     onClick={() => this.addItem()}
                                     disabled={!this.state.newItem.length}>
-                                <i className={["fas", "fa-cart-plus"].join(" ")}/>
+                                <i className={["fas", "fa-plus"].join(" ")}/>
                             </button>
                         </div>
                     </div>
@@ -184,7 +182,7 @@ class App extends Component {
                     <ul className="block">
                         {this.state.list.map(item => {
                             return (
-                                <li key={item.id}>
+                                <li className="listOfIcons" key={item.id}>
                                     {item.value}
                                     <button className="increment" onClick={() => {
                                         if (item.count < 100) {
@@ -216,7 +214,7 @@ class App extends Component {
                     <button className="Checkout"
                             onClick={this.checkout}
                     >
-                        Checkout
+                        <i className={["fas", "fa-check"].join(" ")}/>
                     </button>
                 </div>
             </div>

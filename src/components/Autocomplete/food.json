@@ -1,23 +1,23 @@
 [
   {
-    "name": "Donuts"
-  },
-  {
-    "name": "Pizza"
-  },
-  {
-    "name": "Sushi"
-  },
-  {
-    "name": "Apple"
+    "name": "Cheese"
   },
   {
     "name": "Milk"
   },
   {
-    "name": "Cheese"
+    "name": "Water"
   },
   {
-    "name": "Chips"
+    "name": "Fruits"
+  },
+  {
+    "name": "Salt"
+  },
+  {
+    "name": "Eggs"
+  },
+  {
+    "name": "Onion"
   }
 ]
