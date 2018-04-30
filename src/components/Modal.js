@@ -17,6 +17,7 @@ class ItemEditModal extends React.Component {
             newValue: "",
             newCount: this.props.item.count
         };
+
     }
 
     handleHide() {
@@ -62,12 +63,14 @@ class ItemEditModal extends React.Component {
     }
 
     render() {
+
         return (
             <div className={classes.Modal} className="editButtons" style={{height: 50}}>
                 <Button className="edit"
                         bsStyle="info"
                         bsSize="small"
-                        onClick={() => this.setState({show: true})}
+                        onClick={() => this.setState({show: true,
+                        newCount: this.props.item.count})}
                 >
                     <i className={["fas", "fa-edit"].join(" ")}/>
                 </Button>
