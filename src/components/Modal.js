@@ -86,7 +86,7 @@ class ItemEditModal extends React.Component {
                     </Modal.Header>
                     <Modal.Body>
                         <button className="editForm"/>
-                        <label>
+                        <label className="inputStyle">
                             <input type="text" name="name" placeholder={this.props.item.value}
                                    value={this.state.newValue} onChange={evt => this.updateInputValue(evt)}/>
                         </label>
