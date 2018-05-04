@@ -1,5 +1,5 @@
 
-## Smart Shopping List Application with Retained Responsiveness. 
+## Smart Shopping List Application with Retained Responsiveness 
 
 Go here https://my-shopping-list-app.herokuapp.com/ for live demo.
 
