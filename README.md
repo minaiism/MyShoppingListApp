@@ -3,10 +3,11 @@
 
 Go here https://my-shopping-list-app.herokuapp.com/ for live demo.
 
-App includes incrementing, decrementing, removing and updating newly created items to your shopping list.
+App includes incrementation, decrementation, removal and update of newly created items to your shopping list.
 
-After clicking on 'check' button you are able to see all the items with the exact date of purchase in the basket.
-The basket is located in the top right-hand corner(desktop) or in the hamburger(mobile devices).
+'Check' button refers to confirmation of purchasing goods.
+
+After clicking on 'check' button your list is being moved to the history. History can be checked by clicking on the 'basket' button that is located in the top right-hand corner(desktop) or in the hamburger(mobile devices).
 
 ### Developed With:
 
