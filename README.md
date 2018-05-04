@@ -9,10 +9,10 @@ After clicking on 'check' button you are able to check all purchased items with 
 
 Developed With:
 
-*Webstorm
-*Node.js
-*React
-*Bootstrap 4
+- Webstorm
+- Node.js
+- React
+- Bootstrap 4
 
 
 
